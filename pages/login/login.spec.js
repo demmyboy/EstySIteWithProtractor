@@ -1,4 +1,4 @@
-var helper = require('./helper');
+var helper = require('../../helper');
 var faker = require('faker');
 // describe is used to describe what we are testing
 describe('Main Page Test', function(){
