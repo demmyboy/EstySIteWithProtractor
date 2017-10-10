@@ -1,4 +1,5 @@
 var helper = require('./helper');
+var faker = require('faker');
 // describe is used to describe what we are testing
 describe('Main Page Test', function(){
     
@@ -9,6 +10,11 @@ describe('Main Page Test', function(){
     afterEach(function(){
         browser.manage().deleteAllCookies();
     });
+
+    var randomNameField = faker.name.firstName();
+    var randomEmailField = faker.internet.email();
+    var randomPassword = faker.internet.password();
+
     /* it('should have a title', function(){
         browser.get('http://juliemr.github.io/protractor-demo');
 
@@ -46,15 +52,16 @@ describe('Main Page Test', function(){
         var registerButton = element(by.id('register'));
         var nameField = element(by.id('first-name'));
         var emailField = element(by.id('email'));
-        var passwordEntryField = element(by.id('email'));
+        var passwordEntryField = element(by.id('password'));
         var passwordEntryRepeat = element(by.id('password-repeat'));
         var registerSubmit = element(by.id('register_button'));
 
         registerButton.click();
         helper.waitUntilReady(nameField);
-        nameField.sendKeys('Mazeedah');
-        emailField.sendKeys('mazeedah@iamdemmy.com');
-        passwordEntryField.sendKeys('Abimbola9999');
-        passwordEntryRepeat.sendKeys('Abimbola999');
+        nameField.sendKeys(randomNameField);
+        emailField.sendKeys(randomEmailField);
+        passwordEntryField.sendKeys(randomPassword);
+        passwordEntryRepeat.sendKeys(randomPassword);
+        registerSubmit.click();
     });
 });
