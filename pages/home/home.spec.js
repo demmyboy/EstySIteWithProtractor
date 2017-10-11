@@ -1,8 +1,12 @@
 var helper = require('../../helper');
 var faker = require('faker');
+var HomePage = require('./home.po.js');
+
 // describe is used to describe what we are testing
 describe('Main Page Test', function(){
     
+    var homepage = new HomePage(); 
+
     beforeEach(function(){
         browser.get(browser.params.url);
     });
@@ -10,7 +14,7 @@ describe('Main Page Test', function(){
     afterEach(function(){
         browser.manage().deleteAllCookies();
     });
-
+  
     var randomNameField = faker.name.firstName();
     var randomEmailField = faker.internet.email();
     var randomPassword = faker.internet.password();
@@ -22,8 +26,9 @@ describe('Main Page Test', function(){
     }); */
     it('should have a title', function(){
         //browser.get(browser.params.url);
-        var pageTitle = "Etsy.com | Shop for anything from creative people everywhere";
-        expect(browser.getTitle()).toEqual(pageTitle);
+        //var pageTitle = "Etsy.com | Shop for anything from creative people everywhere";
+        
+        expect(browser.getTitle()).toEqual(homepage.pageTitle);
     });
 
     it('should sign-in and verify there is an error', function(){
